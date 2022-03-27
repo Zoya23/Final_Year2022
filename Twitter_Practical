@@ -1,0 +1,91 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled11.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyNZMBOiudABC1gRF9DwUNNr",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Zoya23/Final_Year2022/blob/main/Twitter_Practical\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bNlzEKvTp_-g",
+        "outputId": "71332ba3-66e3-4474-effe-310f61c1e494"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "kuch meetha hojaaye, @PunjabKingsIPL \\U0001f60b https://t.co/lMXm2fxrfM\n",
+            "It\\u2019s \\U0001d635\\U0001d629\\U0001d622\\U0001d635 easy. Get your matchday jersey now. \\U0001f447\\U0001f497\\n\\n#RoyalsFamily | #\\u0926\\u093f\\u0932\\u0938\\u0947\\u0930\\u0949\\u092f\\u0932 | @devdpd07\n",
+            "What are you doing at 12 PM tomorrow? \\U0001f601\\n\\nJoin skipper Sanju as he addresses the press ahead of our season-opener.\\u2026 https://t.co/VdnaVPVVw6\n",
+            "Practice match. Pink vs Blue. On special demand, just for you. \\u25b6\\ufe0f\\n\\n#RoyalsFamily | #HallaBol | #TATAIPL2022 https://t.co/zkaPNmdWyC\n",
+            "#TATAIPL2022, here we come! \\U0001f497\\n\\n#RoyalsFamily | #\\u0926\\u093f\\u0932\\u0938\\u0947\\u0930\\u0949\\u092f\\u0932 https://t.co/i7iW9kcQdG\n",
+            "@Vihang_Gade05 Hi Vihang,\\n\\nSorry about that, but we've checked and it's working fine now. Wanna give it another try?\\n\\nRegards,\\nTeam RR\n",
+            "@thodasaAdhyapak Hi,\\n\\nSorry about that, but we've checked and it's working fine now. Wanna give it another try?\\n\\nRegards,\\nTeam RR\n",
+            "@OnlyTruthIn Hi,\\n\\nSorry about that, but we've checked and it's working fine now. Wanna give it another try?\\n\\nRegards,\\nTeam RR\n",
+            "Always proud, @BCCIWomen! \\U0001f497\\U0001f1ee\\U0001f1f3 \\n\\n#INDvSA | #CWC22 https://t.co/FDWZeMtS6X\n",
+            "\\U0001f494\n"
+          ]
+        }
+      ],
+      "source": [
+        "import tweepy\n",
+        "#import tkinter as tk\n",
+        "# Creating the authentication object\n",
+        "consumer_key = 'FbtPYoPO3sWwripj67yi9XZ3e'\n",
+        "consumer_secret = '3IvdSVbUjTanQKWwikReuRPgAyQXZ8GmHtAGW86k5KjJ5DAuKD'\n",
+        "access_token = '1456600519707820040-51Cf3e5TGWYMi3RxVX7A1eXZu6OOZ8'\n",
+        "access_token_secret = 'WQWe8GvorlGEKk9ELe7YzjH7PgBEvA9t6h3Xd67Xinjyd'\n",
+        "\n",
+        "auth = tweepy.OAuthHandler(consumer_key,consumer_secret)\n",
+        "# Setting your access token and secret\n",
+        "auth.set_access_token(access_token,access_token_secret)\n",
+        "# Creating the API object while passing in auth information\n",
+        "api = tweepy.API(auth)\n",
+        "\n",
+        "# The Twitter user who we want to get tweets from\n",
+        "name = \"rajasthanroyals\"\n",
+        "# Number of tweets to pull\n",
+        "tweetCount = 10\n",
+        "\n",
+        "# Calling the user_timeline function with our parameters\n",
+        "results = api.user_timeline(id=name, count=tweetCount)\n",
+        "\n",
+        "# foreach through all tweets pulled\n",
+        "for tweet in results:\n",
+        "   # printing the text stored inside the tweet object\n",
+        "   #print(tweet.text)\n",
+        "   u=tweet.text\n",
+        "   u=u.encode('unicode-escape').decode('utf-8')\n",
+        "   print(u)\n"
+      ]
+    }
+  ]
+}
